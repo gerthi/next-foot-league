@@ -13,3 +13,8 @@
 [] Matchup page
 [] Dashboard page
 [] Daily Cron job
+
+---
+
+- Try to cache players using state to avoid exhausting firebase daily credits
+- Create a player helper to build a player object with only required categories
