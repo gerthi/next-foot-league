@@ -1,9 +1,8 @@
 ## todo
 
 [x] Setup project & repo
-[] Firebase config
-[] Add Context
-[] Fetch Player pool
+[x] Firebase config
+[x] Fetch Player pool
 [] Create Pool page
 [] Improved Pool Page
 [] User auth
