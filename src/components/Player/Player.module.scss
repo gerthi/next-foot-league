@@ -1,0 +1,27 @@
+.player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+
+  div {
+    text-align: center;
+    flex: 1;
+    font-size: 0.8em;
+  }
+}
+
+.player_name {
+  text-align: left !important;
+  font-size: 1em !important;
+  min-width: 200px;
+}
+
+.player_club {
+  min-width: 120px;
+}
+
+.player_club,
+.player_position {
+  font-size: 1em !important;
+}
