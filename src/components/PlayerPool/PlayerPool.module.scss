@@ -8,11 +8,19 @@
   justify-content: space-around;
   align-items: center;
 
-  h3 {
+  button {
     flex: 1;
     font-size: 0.9em;
     text-align: center;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
   }
+}
+
+.heading_arrow {
+  color: teal;
 }
 
 .name {
