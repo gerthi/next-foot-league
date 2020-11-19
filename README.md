@@ -4,7 +4,8 @@
 - [x] Firebase config
 - [x] Fetch Player pool
 - [x] Create Pool page
-- [] Improved Pool Page
+- [x] Create a Player helper
+- [x] Improved Pool Page
 - [] User auth
 - [] Create League
 - [] Create Team
