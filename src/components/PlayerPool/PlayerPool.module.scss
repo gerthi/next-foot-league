@@ -1,7 +1,16 @@
 .table_container {
   overflow-y: auto;
+  max-height: 100vh;
 }
 
 .active {
   color: teal;
+}
+
+.pool_container thead th {
+  z-index: 100;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  background: white;
 }

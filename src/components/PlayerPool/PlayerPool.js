@@ -75,12 +75,7 @@ export default function PlayerPool({ players }) {
       <p>Found {players.length} players</p>
 
       <TableContainer component={Paper} className={styles.table_container}>
-        <Table
-          className={styles.pool_container}
-          size='small'
-          stickyHeader
-          aria-label='sticky table'
-        >
+        <Table className={styles.pool_container} size='small'>
           <TableHead>
             <TableRow>
               {CATEGORIES.map((category) => (
