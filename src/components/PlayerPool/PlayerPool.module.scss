@@ -1,25 +1,16 @@
-.pool_container {
-  padding: 20px;
-  margin: 0 auto;
+.table_container {
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
-.pool_header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  h3 {
-    flex: 1;
-    font-size: 0.9em;
-    text-align: center;
-  }
+.active {
+  color: teal;
 }
 
-.name {
-  min-width: 200px;
-  text-align: left !important;
-}
-
-.club {
-  min-width: 120px;
+.pool_container thead th {
+  z-index: 100;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  background: white;
 }
