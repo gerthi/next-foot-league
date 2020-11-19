@@ -13,6 +13,7 @@ function cleanPlayer(player) {
     name: player.name,
     club: teamParser(player.team),
     position: player.position.slice(0, 3).toUpperCase(),
+    games: player.games.appearences,
     minutes:
       player.games.minutes_played > 0
         ? Math.floor(player.games.minutes_played / player.games.appearences)

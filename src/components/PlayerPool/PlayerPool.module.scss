@@ -1,33 +1,7 @@
-.pool_container {
-  padding: 20px;
-  margin: 0 auto;
+.table_container {
+  overflow-y: auto;
 }
 
-.pool_header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  button {
-    flex: 1;
-    font-size: 0.9em;
-    text-align: center;
-    background: transparent;
-    border: none;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.heading_arrow {
+.active {
   color: teal;
-}
-
-.name {
-  min-width: 200px;
-  text-align: left !important;
-}
-
-.club {
-  min-width: 120px;
 }

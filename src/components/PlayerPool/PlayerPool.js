@@ -1,10 +1,20 @@
 import { useState } from "react";
 import Player from "../Player/Player";
+import { CATEGORIES } from "../../constants/categories";
 import styles from "./PlayerPool.module.scss";
 import {
   KeyboardArrowDownRounded,
   KeyboardArrowUpRounded,
 } from "@material-ui/icons";
+
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableSortLabel from "@material-ui/core/TableSortLabel";
+import Paper from "@material-ui/core/Paper";
 
 const orderBy = (players, value, direction) => {
   if (direction === "asc") {
@@ -50,6 +60,10 @@ export default function PlayerPool({ players }) {
     }
   };
 
+  const setDirectionLabel = () => {
+    return direction === "desc" ? "asc" : "desc";
+  };
+
   const setValueAndDirection = (value) => {
     switchDirection();
     setValue(value);
@@ -59,110 +73,41 @@ export default function PlayerPool({ players }) {
     <>
       <h1>Player Pool</h1>
       <p>Found {players.length} players</p>
-      <div className={styles.pool_container}>
-        <div className={styles.pool_header}>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("name")}
-          >
-            <span className={styles.name}>Name</span>
-            {value === "name" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("club")}
-          >
-            <span className={styles.club}>Club</span>
-            {value === "club" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("position")}
-          >
-            <span className={styles.position}>Position</span>
-            {value === "position" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("minutes")}
-          >
-            <span className={styles.minutes}>Min/g</span>
-            {value === "minutes" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("goals")}
-          >
-            <span className={styles.goals}>Goals</span>
-            {value === "goals" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("assists")}
-          >
-            <span className={styles.assists}>Assists</span>
-            {value === "assists" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("keys")}
-          >
-            <span className={styles.assists}>Key pass</span>
-            {value === "keys" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("saves")}
-          >
-            <span className={styles.saves}>Saves</span>
-            {value === "saves" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("interceptions")}
-          >
-            <span className={styles.interceptions}>Interceptions</span>
-            {value === "interceptions" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("fouls")}
-          >
-            <span className={styles.fouls}>Fouls</span>
-            {value === "fouls" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("duels")}
-          >
-            <span className={styles.wonDuels}>Duels won</span>
-            {value === "duels" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("pAcc")}
-          >
-            <span className={styles.passAcc}>Pass %</span>
-            {value === "pAcc" && <SortArrows direction={direction} />}
-          </button>
-          <button
-            className={styles.header_button}
-            onClick={() => setValueAndDirection("sAcc")}
-          >
-            <span className={styles.shotAcc}>Shots %</span>
-            {value === "sAcc" && <SortArrows direction={direction} />}
-          </button>
-        </div>
-        <div className={styles.pool_players}>
-          {orderedPlayers.length > 0
-            ? orderedPlayers.map((player) => (
-                <div className={styles.player} key={player.id}>
-                  <Player player={player} key={player.id} />
-                </div>
-              ))
-            : "loading..."}
-        </div>
-      </div>
+
+      <TableContainer component={Paper} className={styles.table_container}>
+        <Table
+          className={styles.pool_container}
+          size='small'
+          stickyHeader
+          aria-label='sticky table'
+        >
+          <TableHead>
+            <TableRow>
+              {CATEGORIES.map((category) => (
+                <TableCell
+                  onClick={() => setValueAndDirection(category.id)}
+                  className={value === category.id ? styles.active : ""}
+                  align={category.align}
+                  key={category.id}
+                >
+                  <TableSortLabel direction={setDirectionLabel()}>
+                    {category.title}
+                  </TableSortLabel>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {orderedPlayers.length > 0
+              ? orderedPlayers.map((player) => (
+                  <TableRow key={player.id}>
+                    <Player player={player} />
+                  </TableRow>
+                ))
+              : "loading..."}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 }
